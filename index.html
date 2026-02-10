@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Load JS correctly -->
+    <script src="script.js" defer></script>
+</head>
+
+<body class="bg-slate-100 text-slate-900">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
+        <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="h-16 flex items-center justify-between gap-4">
+                <a href="#" class="flex items-center gap-2 font-extrabold">
+                    <span class="h-9 w-9 rounded-xl bg-slate-900 text-white grid place-items-center">✓</span>
+                    <span class="tracking-wide">Todo Website</span>
+                </a>
+
+                <div class="hidden md:flex items-center gap-8 font-semibold">
+                    <a href="#" class="text-slate-600 hover:text-slate-900">Home</a>
+                    <a href="#" class="text-slate-600 hover:text-slate-900">Tasks</a>
+                    <a href="#" class="text-slate-600 hover:text-slate-900">Completed</a>
+                    <a href="#" class="text-slate-600 hover:text-slate-900">About</a>
+                </div>
+
+                <button id="menuBtn"
+                    class="md:hidden inline-flex items-center justify-center rounded-xl border border-slate-200 px-3 py-2 hover:bg-slate-50"
+                    aria-label="Open menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu (needed for toggle) -->
+            <div id="mobileMenu" class="md:hidden hidden pb-4">
+                <div class="mt-2 space-y-2">
+                    <a class="block rounded-xl px-3 py-2 text-slate-700 hover:bg-slate-50" href="#">Home</a>
+                    <a class="block rounded-xl px-3 py-2 text-slate-700 hover:bg-slate-50" href="#">Tasks</a>
+                    <a class="block rounded-xl px-3 py-2 text-slate-700 hover:bg-slate-50" href="#">Completed</a>
+                    <a class="block rounded-xl px-3 py-2 text-slate-700 hover:bg-slate-50" href="#">About</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- Form Card -->
+        <section class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+            <h1 class="text-2xl font-extrabold">Add a Task</h1>
+            <p class="mt-1 text-slate-600">Enter title and description, then click Add.</p>
+
+            <form id="todoForm" class="mt-6 grid gap-4 sm:grid-cols-3 items-end">
+                <div class="sm:col-span-1">
+                    <label for="title" class="block text-sm font-semibold text-slate-700">Title</label>
+                    <input id="title" type="text" placeholder="e.g. Buy groceries"
+                        class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 outline-none focus:ring-2 focus:ring-slate-300" />
+                </div>
+
+                <div class="sm:col-span-2">
+                    <label for="description" class="block text-sm font-semibold text-slate-700">Description</label>
+                    <input id="description" type="text" placeholder="e.g. Milk, eggs, bread"
+                        class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 outline-none focus:ring-2 focus:ring-slate-300" />
+                </div>
+
+                <div class="sm:col-span-3 flex gap-3">
+                    <button type="submit"
+                        class="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-slate-800">
+                        Add Task
+                    </button>
+
+                    <button id="clearAll" type="button"
+                        class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 hover:bg-slate-50">
+                        Clear All
+                    </button>
+                </div>
+            </form>
+
+            <p id="msg" class="mt-3 text-sm text-red-600 hidden">Message</p>
+        </section>
+
+        <!-- Table Card -->
+        <section class="mt-6 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+            <div class="flex items-center justify-between gap-3 flex-wrap">
+                <h2 class="text-xl font-extrabold">Todo Data</h2>
+                <span id="count" class="text-sm text-slate-600">0 tasks</span>
+            </div>
+
+            <div class="mt-4 overflow-x-auto">
+                <table class="min-w-full text-left border-separate border-spacing-y-2">
+                    <thead>
+                        <tr class="text-sm text-slate-600">
+                            <th class="px-4 py-2">#</th>
+                            <th class="px-4 py-2">Title</th>
+                            <th class="px-4 py-2">Description</th>
+                            <th class="px-4 py-2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+</body>
+
+</html>
